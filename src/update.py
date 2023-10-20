@@ -4,7 +4,7 @@ from pathlib import Path
 # Set our folder directory
 folder_dir = f'{Path(__file__).parents[0]}\\data'
 
-d1=pd.read_csv(r"C:\Users\adoro\OneDrive\Documents\GitHub\first_app\student+performance\student\student-mat.csv", sep=";", header= None)
+d1=pd.read_csv(r'C:\Users\adoro\OneDrive\Documents\GitHub\first_app\src\data\student-mat.csv', sep=";", header= None)
 d1
 
 d1.columns = d1.iloc[0]
@@ -15,10 +15,10 @@ d1
 d1.columns = d1.columns.str.lower().str.strip().str.replace(' ', '_')
 d1.columns
 
-d1 = d1.reset_index()
-d1
+d1['id'] = range(1, len(d1) +1) 
 
-d2=pd.read_csv(r"C:\Users\adoro\OneDrive\Documents\GitHub\first_app\student+performance\student\student-por.csv", sep=";", header= None)
+
+d2=pd.read_csv(r"C:\Users\adoro\OneDrive\Documents\GitHub\first_app\src\data\student-por.csv", sep=";", header= None)
 d2
 
 d2.columns = d2.iloc[0]
@@ -29,8 +29,7 @@ d2
 d2.columns = d2.columns.str.lower().str.strip().str.replace(' ', '_')
 d2.columns
 
-d2 = d2.reset_index()
-d2
+d2['id'] = range(1, len(d2) +1) 
 
 #d2.info()
 
@@ -119,10 +118,12 @@ db = client.db
 student = db.student
 classmate = db.classmate
 
-# Set the dataframe index to the id column:
-d1.set_index('index', inplace = True)
-d2.set_index('index', inplace = True)
+db.student.drop()
+db.classmate.drop()
 
 student.insert_many(d1.to_dict(orient='records'))
 
 classmate.insert_many(d2.to_dict(orient='records'))
+
+print('It has been uploaded')
+
