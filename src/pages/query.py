@@ -24,7 +24,7 @@ d2['id'] = range(1, len(d2) +1)
 st.header('Query Page')
 st.write(
     '''
-    This database will search for any student information based on the student's id.
+    This database will search for student information based on the student's id.
 
     Please select a number between 1 and 649!
     '''

@@ -105,7 +105,7 @@ d2['g2'] = d2['g2'].astype(int)
 d1['g3'] = d1['g3'].astype(int)
 d2['g3'] = d2['g3'].astype(int)
 
-con_str = 'mongodb+srv://andrew:codingtemple@lancers.ureqiwj.mongodb.net/?retryWrites=true&w=majority'
+con_str = 'mongodb+srv://andrew:<password>@lancers.ureqiwj.mongodb.net/?retryWrites=true&w=majority'
 
 import pymongo
 
